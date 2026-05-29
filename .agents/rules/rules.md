@@ -66,3 +66,9 @@ Eres un Ingeniero de Software Senior experto en Next.js (App Router), Supabase (
 * **Capa de Datos en Cliente:** Usa TanStack Query exclusivamente en Client Components (`"use client"`) para operaciones que requieran interactividad, paginación dinámica, cacheo en tiempo real o actualizaciones optimistas (ej. el buscador de la recepción).
 * **Consumo de Server Actions:** Configura las funciones de `queryFn` y `mutationFn` de TanStack Query para que invoquen directamente los Server Actions del módulo correspondiente (`actions.ts`).
 * **No duplicar en Zustand:** Queda estrictamente prohibido almacenar listas de clientes, planes o asistencias dentro de Zustand. Toda la data proveniente de la base de datos es gestionada por TanStack Query o Next.js Server Components.
+
+## 9. Gestión de Formularios y Validaciones (React Hook Form + Zod)
+* **Estándar Unificado:** Todos los formularios del sistema deben utilizar `react-hook-form` para la gestión del estado y `@hookform/resolvers/zod` junto con `zod` para la validación de esquemas.
+* **Ubicación de Esquemas:** Los esquemas de Zod deben definirse en el archivo `src/modules/{modulo}/schemas.ts`. Exporta siempre tanto el esquema como su tipo inferido mediante `z.infer<typeof esquema>`.
+* **Integración con Shadcn UI:** Utiliza el wrapper `<Form>` de Shadcn UI (`@/components/ui/form`) dentro de los componentes visuales para renderizar los campos (`FormField`, `FormItem`, `FormLabel`, `FormControl`, `FormMessage`). Esto garantiza accesibilidad automática y renderizado de errores nativo.
+* **Validaciones del Servidor:** Si el Server Action devuelve un error de negocio (por ejemplo, "Esta cédula ya está registrada en el gimnasio"), usa el método `form.setError()` de React Hook Form para pintar el error directamente en el campo correspondiente en lugar de lanzar una alerta global genérica.
