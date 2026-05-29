@@ -71,14 +71,14 @@ BEGIN
     VALUES (
         NEW.id,
         COALESCE(NEW.raw_user_meta_data->>'nombre_completo', 'Nuevo Usuario'),
-        (NEW.raw_user_meta_data->>'tipo_documento')::tipo_documento_enum,
+        (NEW.raw_user_meta_data->>'tipo_documento')::public.tipo_documento_enum,
         NEW.raw_user_meta_data->>'numero_documento',
         NEW.raw_user_meta_data->>'telefono',
-        COALESCE((NEW.raw_user_meta_data->>'rol')::rol_enum, 'cliente'::rol_enum)
+        COALESCE((NEW.raw_user_meta_data->>'rol')::public.rol_enum, 'cliente'::public.rol_enum)
     );
     RETURN NEW;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public, pg_catalog;
 
 -- Disparador del trigger
 CREATE OR REPLACE TRIGGER on_auth_user_created
