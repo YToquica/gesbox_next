@@ -2,8 +2,10 @@
 
 :root {
   /* Background & Foreground base */
-  --background: #f8f9fa; /* Concrete Light */
-  --foreground: #191c1d; /* Obsidian Gray */
+  --background: #f8f9fa;
+  /* Concrete Light */
+  --foreground: #191c1d;
+  /* Obsidian Gray */
 
   /* Custom brand colors from design.md */
   --surface: #f8f9fa;
@@ -21,71 +23,74 @@
   --outline: #8e7165;
   --outline-variant: #e2bfb2;
   --surface-tint: #ff6b1a;
-  
+
   --primary: #ff6b1a;
   --on-primary: #ffffff;
-  --primary-container: #ff6b1a; /* Electric Orange */
+  --primary-container: #ff6b1a;
+  /* Electric Orange */
   --on-primary-container: #591e00;
   --inverse-primary: #ffb596;
-  
+
   --secondary: #5d5e61;
   --on-secondary: #ffffff;
   --secondary-container: #e2e2e5;
   --on-secondary-container: #636467;
-  
+
   --tertiary: #505f76;
   --on-tertiary: #ffffff;
   --tertiary-container: #8a9ab2;
   --on-tertiary-container: #223246;
-  
+
   --error: #ba1a1a;
   --on-error: #ffffff;
   --error-container: #ffdad6;
   --on-error-container: #93000a;
-  
+
   --primary-fixed: #ffdbcd;
   --primary-fixed-dim: #ffb596;
   --on-primary-fixed: #360f00;
   --on-primary-fixed-variant: #7d2d00;
-  
+
   --secondary-fixed: #e2e2e5;
   --secondary-fixed-dim: #c6c6c9;
   --on-secondary-fixed: #1a1c1e;
   --on-secondary-fixed-variant: #454749;
-  
+
   --tertiary-fixed: #d3e4fe;
   --tertiary-fixed-dim: #b7c8e1;
   --on-tertiary-fixed: #0b1c30;
   --on-tertiary-fixed-variant: #38485d;
-  
+
   --surface-variant: #e1e3e4;
 
   /* Shadcn standard theme variables mapping to design.md tokens */
   --card: var(--surface-container-lowest);
   --card-foreground: var(--on-surface);
-  
+
   --popover: var(--surface-container-lowest);
   --popover-foreground: var(--on-surface);
-  
+
   --primary-shadcn: var(--primary);
   --primary-foreground-shadcn: var(--on-primary);
-  
+
   --secondary-shadcn: var(--secondary);
   --secondary-foreground-shadcn: var(--on-secondary);
-  
+
   --muted: var(--surface-variant);
   --muted-foreground: var(--secondary);
-  
+
   --accent: var(--surface-container);
   --accent-foreground: var(--on-surface);
-  
+
   --destructive: var(--error);
   --destructive-foreground: var(--on-error);
-  
-  --border: #e2e8f0; /* card border */
+
+  --border: #e2e8f0;
+  /* card border */
   --input: var(--outline-variant);
-  --ring: var(--primary-container); /* focus border primary orange */
-  
+  --ring: var(--primary-container);
+  /* focus border primary orange */
+
   --radius-sm-val: 0.25rem;
   --radius-val: 0.5rem;
   --radius-md-val: 0.75rem;
@@ -96,14 +101,17 @@
 }
 
 .dark {
-  --background: #0d0e10; /* Deep Obsidian Black background */
-  --foreground: #f8f9fa; /* Concrete Light text */
-  
+  --background: #0d0e10;
+  /* Deep Obsidian Black background */
+  --foreground: #f8f9fa;
+  /* Concrete Light text */
+
   --surface: #121315;
   --surface-dim: #0d0e10;
   --surface-bright: #2d2f34;
   --surface-container-lowest: #090a0b;
-  --surface-container-low: #121315; /* content background: dark gray */
+  --surface-container-low: #121315;
+  /* content background: dark gray */
   --surface-container: #1b1d20;
   --surface-container-high: #24272c;
   --surface-container-highest: #2d3036;
@@ -112,49 +120,52 @@
   --outline: #e2bfb2;
   --outline-variant: #8e7165;
   --surface-tint: #ff6b1a;
-  
-  --primary: #ff6b1a; /* Keep vibrant Electric Orange in dark mode for contrast! */
+
+  --primary: #ff6b1a;
+  /* Keep vibrant Electric Orange in dark mode for contrast! */
   --on-primary: #ffffff;
   --primary-container: #ff6b1a;
   --on-primary-container: #591e00;
-  
+
   --secondary: #c6c6c9;
   --on-secondary: #2c2d30;
   --secondary-container: #454749;
   --on-secondary-container: #e2e2e5;
-  
+
   --tertiary: #b7c8e1;
   --on-tertiary: #223246;
   --tertiary-container: #38485d;
   --on-tertiary-container: #d3e4fe;
-  
+
   --error: #ffb4ab;
   --on-error: #690005;
   --error-container: #93000a;
   --on-error-container: #ffdad6;
-  
-  --card: #181a1d; /* Card is lighter than background */
+
+  --card: #181a1d;
+  /* Card is lighter than background */
   --card-foreground: var(--on-surface);
-  
+
   --popover: #181a1d;
   --popover-foreground: var(--on-surface);
-  
+
   --primary-shadcn: var(--primary-container);
   --primary-foreground-shadcn: #ffffff;
-  
+
   --secondary-shadcn: var(--secondary-container);
   --secondary-foreground-shadcn: var(--on-secondary-container);
-  
+
   --muted: #1e2024;
   --muted-foreground: #a1a1aa;
-  
+
   --accent: #22252a;
   --accent-foreground: var(--on-surface);
-  
+
   --destructive: var(--error);
   --destructive-foreground: var(--on-error);
-  
-  --border: #22252a; /* subtle dark border */
+
+  --border: #22252a;
+  /* subtle dark border */
   --input: #22252a;
   --ring: var(--primary-container);
 
@@ -181,7 +192,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  
+
   /* Brand color tokens */
   --color-surface: var(--surface);
   --color-surface-dim: var(--surface-dim);
@@ -198,18 +209,18 @@
   --color-outline: var(--outline);
   --color-outline-variant: var(--outline-variant);
   --color-surface-tint: var(--surface-tint);
-  
+
   --color-brand-primary: var(--primary);
   --color-brand-on-primary: var(--on-primary);
   --color-brand-primary-container: var(--primary-container);
   --color-brand-on-primary-container: var(--on-primary-container);
   --color-brand-inverse-primary: var(--inverse-primary);
-  
+
   --color-brand-secondary: var(--secondary);
   --color-brand-on-secondary: var(--on-secondary);
   --color-brand-secondary-container: var(--secondary-container);
   --color-brand-on-secondary-container: var(--on-secondary-container);
-  
+
   --color-brand-tertiary: var(--tertiary);
   --color-brand-on-tertiary: var(--on-tertiary);
   --color-brand-tertiary-container: var(--tertiary-container);
@@ -297,4 +308,3 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
-
