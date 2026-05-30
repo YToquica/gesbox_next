@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend, Inter } from "next/font/google";
 import "./globals.css";
+import QueryProvider from "@/components/providers/query-provider";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -29,7 +30,11 @@ export default function RootLayout({
       lang="es"
       className={`${lexend.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        <QueryProvider>
+          {children}
+        </QueryProvider>
+      </body>
     </html>
   );
 }

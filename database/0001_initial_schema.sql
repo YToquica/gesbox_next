@@ -95,6 +95,27 @@ ALTER TABLE public.membresias ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.pagos ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.asistencias ENABLE ROW LEVEL SECURITY;
 
+-- Funciones auxiliares para RLS no recursivo
+CREATE OR REPLACE FUNCTION public.es_admin(user_id UUID)
+RETURNS BOOLEAN AS $$
+BEGIN
+    RETURN EXISTS (
+        SELECT 1 FROM public.profiles
+        WHERE id = user_id AND rol = 'admin'::public.rol_enum
+    );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
+CREATE OR REPLACE FUNCTION public.es_empleado(user_id UUID)
+RETURNS BOOLEAN AS $$
+BEGIN
+    RETURN EXISTS (
+        SELECT 1 FROM public.profiles
+        WHERE id = user_id AND rol IN ('admin'::public.rol_enum, 'recepcionista'::public.rol_enum)
+    );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
 -- 4.1 Políticas para 'Profiles'
 CREATE POLICY "Permitir lectura pública de perfiles a empleados" 
     ON public.profiles FOR SELECT 
@@ -106,21 +127,11 @@ CREATE POLICY "Usuarios pueden actualizar su propio perfil"
 
 CREATE POLICY "Admins y recepcionistas pueden actualizar perfiles de otros"
     ON public.profiles FOR UPDATE
-    USING (
-        EXISTS (
-            SELECT 1 FROM public.profiles 
-            WHERE id = auth.uid() AND rol IN ('admin', 'recepcionista')
-        )
-    );
+    USING (public.es_empleado(auth.uid()));
 
 CREATE POLICY "Admins pueden hacer todo en perfiles" 
     ON public.profiles FOR ALL 
-    USING (
-        EXISTS (
-            SELECT 1 FROM public.profiles 
-            WHERE id = auth.uid() AND rol = 'admin'
-        )
-    );
+    USING (public.es_admin(auth.uid()));
 
 -- 4.2 Políticas para 'Planes'
 CREATE POLICY "Cualquiera ve los planes" 

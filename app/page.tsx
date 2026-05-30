@@ -45,7 +45,7 @@ export default async function Home() {
                 <div className="hidden sm:flex flex-col items-end text-xs">
                   <span className="font-semibold text-foreground">{profile.nombre_completo}</span>
                   <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-brand-primary/10 text-brand-primary mt-0.5">
-                    {profile.rol === 'admin' ? 'Administrador' : 'Recepcionista'}
+                    {profile.rol === 'admin' ? 'Administrador' : profile.rol === 'recepcionista' ? 'Recepcionista' : 'Cliente'}
                   </span>
                 </div>
                 
@@ -75,7 +75,7 @@ export default async function Home() {
             {profile && (
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-semibold mb-6 animate-pulse">
                 <Shield className="h-3.5 w-3.5" />
-                Sesión Iniciada como {profile.rol === 'admin' ? 'Administrador' : 'Recepcionista'}
+                Sesión Iniciada como {profile.rol === 'admin' ? 'Administrador' : profile.rol === 'recepcionista' ? 'Recepcionista' : 'Cliente'}
               </div>
             )}
             
@@ -89,8 +89,8 @@ export default async function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               {profile ? (
-                <Button size="lg" className="w-full sm:w-auto h-12 px-8 bg-brand-primary text-white hover:bg-brand-primary/95 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all">
-                  Ir al Mostrador
+                <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 bg-brand-primary text-white hover:bg-brand-primary/95 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all">
+                  <Link href="/dashboard">Ir al Mostrador</Link>
                 </Button>
               ) : (
                 <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 bg-brand-primary text-white hover:bg-brand-primary/95 text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all">
