@@ -15,7 +15,8 @@ import {
   Shield,
   LayoutDashboard,
   Sun,
-  Moon
+  Moon,
+  UserCheck
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -65,6 +66,11 @@ export default function DashboardShell({ children, profile }: DashboardShellProp
       name: 'Resumen',
       href: '/dashboard',
       icon: LayoutDashboard,
+    },
+    {
+      name: 'Recepción',
+      href: '/dashboard/recepcion',
+      icon: UserCheck,
     },
     {
       name: 'Clientes',

@@ -116,6 +116,25 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
+-- Funciones de validación para registro
+CREATE OR REPLACE FUNCTION public.check_document_exists(doc_num TEXT)
+RETURNS BOOLEAN AS $$
+BEGIN
+    RETURN EXISTS (
+        SELECT 1 FROM public.profiles WHERE numero_documento = doc_num
+    );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
+CREATE OR REPLACE FUNCTION public.check_email_exists(email_to_check TEXT)
+RETURNS BOOLEAN AS $$
+BEGIN
+    RETURN EXISTS (
+        SELECT 1 FROM auth.users WHERE email = email_to_check
+    );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = auth, public;
+
 -- 4.1 Políticas para 'Profiles'
 CREATE POLICY "Permitir lectura pública de perfiles a empleados" 
     ON public.profiles FOR SELECT 
